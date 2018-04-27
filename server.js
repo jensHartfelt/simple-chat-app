@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
-const io = require("socket.io").listen(8000);
+const io = require("socket.io")(http);
 const fs = require("fs");
 const uniqid = require("uniqid");
 
@@ -54,7 +54,7 @@ io.on("connection", socket => {
 });
 
 /********* SERVER *********/
-http.listen(80, () => {
+http.listen(process.env.PORT || 80, () => {
   console.log("listening on port 80");
 });
 
