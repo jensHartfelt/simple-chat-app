@@ -40,7 +40,9 @@
 
         <!-- Display name -->
         <p>Display name:
-          <span class="bold">{{ displayName }}</span>
+          <div class="display-name">
+            <span class="bold"> {{ displayName }}</span>
+          </div>
         </p>
 
         <!-- Change display name  -->
@@ -69,7 +71,7 @@
           <!-- Others messages -->
           <div class="message" v-if="message.authorId !== userId">
             <div class="message-meta">
-              <p>{{message.author}}</p>
+              <p class="display-name">{{message.author}}</p>
               <p class="meta">{{ moment(message.time).fromNow() }}</p>
             </div>
             <div class="message-content">
