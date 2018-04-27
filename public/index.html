@@ -19,7 +19,6 @@
     <!-- Choose a display name modal -->
     <div class="modal" v-if="overlayActive">
       <h1>Hey there!</h1>
-      <img :src="'/images/'+browser+'.svg'" alt="browser">
       <p>Welcome to this super simple chat app. Before you start chatting, you have to choose a display name. Enter one below</p>
       <input type="text" @keyup.enter="verifyDisplayName" v-model="displayName" placeholder="Enter display name here...">
       <button href="#" @click="verifyDisplayName" class="button" :class="{ disabled : !displayName }">Start chatting!</button>
