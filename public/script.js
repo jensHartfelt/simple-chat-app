@@ -145,7 +145,7 @@ var app = new Vue({
         time: 1524828448800,
         author: "Chat App Bot",
         content:
-          "Hi! Welcome to the chat app\n\n Send messages by typing your message and pressing enter\n\n You kan make line breaks by holding down the shift key.\n\n The following shorthands are converted to emojis: \n\n :) \n :-) \n :D \n :( \n :-( \n\n The chat app is globally available to everyone but stores only the last 500 messages \n\n Enjoy 😊"
+          "Hi! Welcome to the chat app\n\nSend messages by typing your message and pressing enter\n\nYou kan make line breaks by holding down the shift key.\n\nThe following shorthands are converted to emojis: \n\n :) \n :-) \n :D \n :( \n :-( \n\nThe chat app is globally available to everyone but stores only the last 500 messages \n\nEnjoy 😊"
       });
     }
   },
