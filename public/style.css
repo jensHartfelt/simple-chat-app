@@ -80,17 +80,64 @@ div.header-nav {
   align-items: center;
   z-index: 1;
 }
-
-.display-name-container {
+.navigation-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.display-name-container button {
+.navigation-container button {
   font-size: 0.85rem;
   padding: 0.6rem 0.8rem;
   margin: 0.3rem 0 0.3rem 1.3rem;
   line-height: 1rem;
+}
+.burger-menu-toggle {
+  display: none;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  right: 0;
+  top: 0;
+}
+.burger-menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: #4155ac;
+}
+
+@media screen and (max-width: 700px) {
+  div.header-nav {
+    flex-direction: column;
+  }
+  .navigation-container {
+    padding-bottom: 0.5rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .navigation-container {
+    flex-direction: column;
+    background-color: #f2f6f7;
+    border-top: 1px #cdd0d1 solid;
+    width: 100vw;
+    opacity: 0;
+    padding-bottom: 0rem;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 240ms ease;
+  }
+  .navigation-container.open {
+    max-height: 200px;
+    padding-bottom: 0.5rem;
+    opacity: 1;
+    transition: all 280ms ease;
+  }
+  .navigation-container .vertical-seperator {
+    display: none;
+  }
+  .burger-menu-toggle {
+    display: block;
+  }
 }
 
 /**** New message container ****/
@@ -100,26 +147,36 @@ div.new-message-container {
   width: 100%;
   background-color: #fff;
   border-top: 1px #cdd0d1 solid;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.75rem;
 }
 div.new-message-container .inner-container {
   margin: 0 auto;
-  width: 90vw;
-  max-width: 800px;
+  max-width: 700px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 div.new-message-container button {
-  min-width: 160px;
+  min-width: 100px;
   text-align: center;
   font-weight: 300;
+}
+
+/* Moves the send button */
+@media screen and (max-width: 450px) {
+  div.new-message-container .inner-container {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  div.new-message-container button {
+    margin-top: 8px;
+  }
 }
 
 /**** Messages container ****/
 div.messages-container {
   min-height: 100vh;
-  padding: 80px 0 120px 0;
+  padding: 120px 0 120px 0;
 }
 div.messages-inner-container {
   max-width: 900px;
@@ -184,6 +241,60 @@ div.messages-inner-container {
   left: initial;
   right: -9px;
   transform: rotate(-225deg);
+}
+
+@media screen and (max-width: 700px) {
+  .message,
+  .message.self {
+    margin: 0 4%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .message {
+    padding-right: 10%;
+  }
+
+  .message.self {
+    padding-left: 10%;
+    padding-right: 0%;
+  }
+
+  .message-meta {
+    text-align: left;
+    margin-bottom: 2rem;
+    order: 2;
+    display: flex;
+    align-items: baseline;
+    min-width: initial;
+  }
+
+  .message-meta p.meta {
+    margin-left: 8px;
+  }
+
+  .message-content,
+  .message.self .message-content {
+    order: 1;
+    width: 100%;
+    padding: 0.7rem;
+    margin: 0 0 1rem 0;
+  }
+  .message-content:before {
+    transform: rotate(225deg);
+    bottom: -9px;
+    left: 9px;
+  }
+
+  .message.self .message-content:before {
+    transform: rotate(225deg);
+    bottom: -9px;
+    right: 9px;
+  }
+  .message.self .message-meta {
+    text-align: right;
+    align-self: flex-end;
+  }
 }
 
 /**** Typography ****/

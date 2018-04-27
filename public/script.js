@@ -24,7 +24,8 @@ var app = new Vue({
     // Reference to the body
     bodyEl: document.querySelector("body"),
     // Reference to moment.js (it's used in the html-templates and is therefor needed here)
-    moment: window.moment
+    moment: window.moment,
+    burgerMenuOpen: false
   },
   methods: {
     verifyDisplayName: function() {
