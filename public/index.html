@@ -1,0 +1,111 @@
+<html>
+
+<head>
+  <title>Simple Chat App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,500" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Loader for when the app is being loaded and parsed -->
+  <p id="mainAppLoader" class="loader" style="font-family: sans-serif; margin-top: 10vh;">Loading...</p>
+
+  <!-- Main app -->
+  <div id="app" style="display: none">
+
+    <!-- Choose a display name modal -->
+    <div class="modal" v-if="overlayActive">
+      <h1>Hey there!</h1>
+      <img :src="'/images/'+browser+'.svg'" alt="browser">
+      <p>Welcome to this super simple chat app. Before you start chatting, you have to choose a display name. Enter one below</p>
+      <input type="text" @keyup.enter="verifyDisplayName" v-model="displayName" placeholder="Enter display name here...">
+      <button href="#" @click="verifyDisplayName" class="button" :class="{ disabled : !displayName }">Start chatting!</button>
+    </div>
+    <!-- / Choose a d isplay name modal -->
+
+    <!-- Header nav -->
+    <div class="header-nav">
+      <p class="brand">Simple Chat App</p>
+      <div class="display-name-container" v-if="displayName">
+        <!-- Users online -->
+        <p>Users online:
+          <span class="bold">{{ usersOnline }} </span>
+        </p>
+
+        <div class="vertical-seperator"></div>
+
+        <!-- Display name -->
+        <p>Display name:
+          <span class="bold">{{ displayName }}</span>
+        </p>
+
+        <!-- Change display name  -->
+        <button @click="deleteSavedDisplayName" class="button outline">Change display name</button>
+      </div>
+    </div>
+    <!-- / Header nav -->
+
+    <!-- Messages container -->
+    <div class="messages-container">
+      <div class="messages-inner-container">
+
+        <p v-if="!appReady" class="loader">Getting messages...</p>
+
+        <!-- Message loop -->
+        <span v-for="message in messages">
+
+          <!-- Others messages -->
+          <div class="message" v-if="message.authorId !== userId">
+            <div class="message-meta">
+              <p>{{message.author}}</p>
+              <p class="meta">{{ moment(message.time).fromNow() }}</p>
+            </div>
+            <div class="message-content">
+              <p>{{message.content}}</p>
+            </div>
+          </div>
+
+          <!-- Users own messages -->
+          <div class="message self" v-else>
+            <div class="message-content">
+              <p>{{message.content}}</p>
+            </div>
+            <div class="message-meta">
+              <p>You</p>
+              <p class="meta">{{ moment(message.time).fromNow() }}</p>
+            </div>
+          </div>
+        </span>
+
+      </div>
+    </div>
+    <!-- /Messages container -->
+
+    <!-- New message container -->
+    <div class="new-message-container">
+      <div class="inner-container">
+        <textarea v-model="clientMessage" @keyup.enter.exact="sendMessage" placeholder="Type your message here.."></textarea>
+        <button @click="sendMessage" class="button" :class="{ disabled : !clientMessage }">Send message</button>
+      </div>
+    </div>
+    <!-- / New message container -->
+
+    <div class="overlay" v-if="overlayActive"></div>
+  </div>
+
+
+  <!-- Socket io -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <!-- Vue.js for templating -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+  <!-- Moment.js for date-formating -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+  <!-- Tiny animate for js-animations (used to scroll messages into view) -->
+  <script src="https://cdn.jsdelivr.net/npm/TinyAnimate@0.4.0/src/TinyAnimate.min.js"></script>
+  <!-- Custom script file -->
+  <script src="script.js"></script>
+</body>
+
+</html>
