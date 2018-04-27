@@ -178,7 +178,7 @@ var app = new Vue({
      * ie. beforeUpdate or afterUpdate that runs every time the
      * component renders
      */
-    this.socket = io.connect("http://localhost:8000");
+    this.socket = io.connect(":8000"); // Connects to current domain at port 80
 
     // Get user id
     if (!localStorage.getItem("userId")) {
