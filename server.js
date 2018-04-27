@@ -57,7 +57,7 @@ io.on("connection", socket => {
 
 /********* SERVER *********/
 
-http.listen(8080, () => {
+http.listen(process.env.PORT || 80, () => {
   console.log("listening on port 80");
 });
 
