@@ -109,11 +109,7 @@ var app = new Vue({
        * Shows how many users are connected. The curent client is included
        * in the number of connected users, so the number is substracted by one
        */
-      if (connectedUsers - 1 < 1) {
-        this.usersOnline = 0;
-      } else {
-        this.usersOnline = connectedUsers - 1;
-      }
+      this.usersOnline = connectedUsers;
     },
     setExistingMessages(messages) {
       /**
