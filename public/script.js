@@ -180,7 +180,7 @@ var app = new Vue({
      */
     // var webSocketHost = location.origin.replace(/http.+\//, "ws");
     var wsHost = location.origin.split("//")[1];
-    wsHost = "ws://" + wsHost + ":8000";
+    wsHost = wsHost + ":8000";
     this.socket = io.connect(wsHost); // Connects to current domain at port 80
 
     // Get user id
