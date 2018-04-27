@@ -42,7 +42,7 @@
         </p>
 
         <!-- Change display name  -->
-        <button @click="deleteSavedDisplayName" class="button outline">Change display name</button>
+        <button @click="changeDisplayName" class="button outline">Change display name</button>
       </div>
     </div>
     <!-- / Header nav -->
@@ -94,7 +94,6 @@
 
     <div class="overlay" v-if="overlayActive"></div>
   </div>
-
 
   <!-- Socket io -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>

@@ -22,7 +22,9 @@ var app = new Vue({
     // browser -> "chrome, safari, firefox or other"
     browser: "",
     // Reference to the body
-    bodyEl: document.querySelector("body")
+    bodyEl: document.querySelector("body"),
+    // Reference to moment.js (it's used in the html-templates and is therefor needed here)
+    moment: window.moment
   },
   methods: {
     verifyDisplayName: function() {
@@ -92,13 +94,13 @@ var app = new Vue({
         );
       });
     },
-    deleteSavedDisplayName: function() {
+    changeDisplayName: function() {
       /**
        * Deletes the save displayName from lovalstorage and retrigger
        * the modal where you have to choose a display name
        */
-      localStorage.removeItem("displayName");
-      this.displayName = "";
+      // localStorage.removeItem("displayName");
+      // this.displayName = "";
       this.overlayActive = true;
     },
     updateConnectedUsers: function(connectedUsers) {
@@ -138,35 +140,12 @@ var app = new Vue({
       this.uniqueId = uniqueId;
     },
     runWelcomeSequence() {
-      var welcomeMessages = [
-        "Send messages by typing your message and pressing enter",
-        "You kan make line breaks by holding down the shift key",
-        "The following shorthands are converted to emojis: \n:) \n:-) \n:D \n:( \n:-(",
-        "The chat app is globally available to everyone but stores only the last 500 messages",
-        "Enjoy 😊"
-      ];
-
-      this.messages.push({
-        time: Date.now(),
-        author: "Simple Chat App",
-        content: "Hi! Welcome to the chat app"
+      this.messages.unshift({
+        time: 1524828448800,
+        author: "Chat App Bot",
+        content:
+          "Hi! Welcome to the chat app\n\n Send messages by typing your message and pressing enter\n\n You kan make line breaks by holding down the shift key.\n\n The following shorthands are converted to emojis: \n\n :) \n :-) \n :D \n :( \n :-( \n\n The chat app is globally available to everyone but stores only the last 500 messages \n\n Enjoy 😊"
       });
-
-      var iterator = 0;
-      var interval = setInterval(
-        function() {
-          this.messages.push({
-            time: Date.now(),
-            author: "Simple Chat App",
-            content: welcomeMessages[iterator]
-          });
-          iterator++;
-          if (iterator >= 5) {
-            clearInterval(interval);
-          }
-        }.bind(this),
-        3000
-      );
     }
   },
   created() {
@@ -178,10 +157,7 @@ var app = new Vue({
      * ie. beforeUpdate or afterUpdate that runs every time the
      * component renders
      */
-    // var webSocketHost = location.origin.replace(/http.+\//, "ws");
-    var wsHost = location.origin.split("//")[1];
-    wsHost = wsHost + ":8000";
-    this.socket = io.connect(wsHost); // Connects to current domain at port 80
+    this.socket = io.connect(":8000"); // Connects to current domain at port 8000
 
     // Get user id
     if (!localStorage.getItem("userId")) {

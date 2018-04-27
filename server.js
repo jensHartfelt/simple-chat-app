@@ -26,8 +26,7 @@ var connectedUsers = 0;
 
 // Event that fires when a user connects
 io.on("connection", socket => {
-  // Increase the amount of connected users and tell all other users
-  // about the change
+  // Increase the amount of connected users and tell all other users about the change
   connectedUsers++;
   io.emit("connected users update", connectedUsers);
 
@@ -38,7 +37,7 @@ io.on("connection", socket => {
     socket.broadcast.emit("new message", msg);
 
     // Save messages in local variable
-    if (messages.length >= 50) {
+    if (messages.length >= 500) {
       messages.shift();
     }
     messages.push(msg);
@@ -47,8 +46,7 @@ io.on("connection", socket => {
     storeMessages();
   });
 
-  // When a user disconnects, tell other users about the new
-  // amount of connected users
+  // When a user disconnects, tell other users about the new amount of connected users
   socket.on("disconnect", () => {
     connectedUsers--;
     io.emit("connected users update", connectedUsers);
@@ -56,8 +54,7 @@ io.on("connection", socket => {
 });
 
 /********* SERVER *********/
-
-http.listen(process.env.PORT || 80, () => {
+http.listen(80, () => {
   console.log("listening on port 80");
 });
 
@@ -65,8 +62,10 @@ http.listen(process.env.PORT || 80, () => {
 var timeout;
 function storeMessages() {
   /**
-   * Debounced message-saving. Will only save to file after 1s of inactivity
-   *
+   * Debounced message-saving. Will only save to file after 10s of inactivity
+   * The file doesn't really need to stay super-updated since new users will get
+   * the current messages from memory. File is only there incase server dies
+   * and restarts.
    */
   clearTimeout(timeout);
   timeout = setTimeout(() => {
@@ -76,5 +75,5 @@ function storeMessages() {
         "Messages saved! File now contains " + messages.length + " messages"
       );
     });
-  }, 1000);
+  }, 10000);
 }

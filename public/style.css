@@ -143,6 +143,7 @@ div.messages-inner-container {
 }
 .message-content {
   flex-grow: 1;
+  line-height: 1.4;
   position: relative;
   background-color: #fff;
   border: 1px #cdd0d1 solid;
@@ -247,6 +248,7 @@ input {
 }
 
 textarea {
+  padding: 0 0.5rem 0 0;
   resize: none;
   width: 100%;
   min-height: 60px;
