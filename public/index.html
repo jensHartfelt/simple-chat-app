@@ -67,19 +67,10 @@
         <!-- Message loop -->
         <span v-for="message in messages">
 
-          <!-- Others messages -->
-          <div class="message" v-if="message.authorId !== userId">
-            <div class="message-meta">
-              <p class="display-name">{{message.author}}</p>
-              <p class="meta">{{ moment(message.time).fromNow() }}</p>
-            </div>
-            <div class="message-content">
-              <p>{{message.content}}</p>
-            </div>
-          </div>
+
 
           <!-- Users own messages -->
-          <div class="message self" v-else>
+          <div class="message self" v-if="message.authorId === userId">
             <div class="message-content">
               <p>{{message.content}}</p>
             </div>
@@ -87,6 +78,17 @@
               <p>You</p>
 
               <p class="meta">{{ moment(message.time).fromNow() }}</p>
+            </div>
+          </div>
+
+          <!-- Others messages -->
+          <div class="message" v-else>
+            <div class="message-meta">
+              <p class="display-name">{{message.author}}</p>
+              <p class="meta">{{ moment(message.time).fromNow() }}</p>
+            </div>
+            <div class="message-content">
+              <p>{{message.content}}</p>
             </div>
           </div>
         </span>

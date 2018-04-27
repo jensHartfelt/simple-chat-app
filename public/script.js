@@ -134,7 +134,7 @@ var app = new Vue({
     },
     saveUniqueId(uniqueId) {
       localStorage.setItem("userId", uniqueId);
-      this.uniqueId = uniqueId;
+      this.userId = uniqueId;
     },
     runWelcomeSequence() {
       this.messages.unshift({

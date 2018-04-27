@@ -1,41 +1,118 @@
-[{
-  "time": 1524868474457,
-  "author": "911",
-  "authorId": "",
-  "content": "yo"
-}, {
-  "time": 1524869451919,
-  "author": "Reddit Guy",
-  "authorId": "",
-  "content": "Hello, I'm a REDDIT GUY from Canada"
-}, {
-  "time": 1524869493950,
-  "author": "Reddit Guy",
-  "authorId": "",
-  "content": "Looks good. The only confusing thing is that it appears other user's previous messages are displayed as coming from \"You\"\n"
-}, {
-  "time": 1524869525633,
-  "author": "Reddit Guy",
-  "authorId": "",
-  "content": "Also, it says that there are 0 users online. DON'T I COUNT???!!!"
-}, {
-  "time": 1524869672283,
-  "author": "Rascal_Two",
-  "authorId": "",
-  "content": "Hello from Reddit - \n😊 😊 😊 😢 😢 "
-}, {
-  "time": 1524869722650,
-  "author": "Bilbo",
-  "authorId": "",
-  "content": "AYE YOOOOOOO. Wazxzzaaaahhhh F\nrom the Shire"
-}, {
-  "time": 1524870160983,
-  "author": "mrpoopybum",
-  "authorId": "",
-  "content": "hoi\n"
-}, {
-  "time": 1524870176087,
-  "author": "mrpoopybum",
-  "authorId": "",
-  "content": "😊\n"
-}]
+[
+  { "time": 1524868474457, "author": "911", "authorId": "", "content": "yo" },
+  {
+    "time": 1524869451919,
+    "author": "Reddit Guy",
+    "authorId": "1",
+    "content": "Hello, I'm a REDDIT GUY from Canada"
+  },
+  {
+    "time": 1524869493950,
+    "author": "Reddit Guy",
+    "authorId": "2",
+    "content":
+      "Looks good. The only confusing thing is that it appears other user's previous messages are displayed as coming from \"You\"\n"
+  },
+  {
+    "time": 1524869525633,
+    "author": "Reddit Guy",
+    "authorId": "3",
+    "content":
+      "Also, it says that there are 0 users online. DON'T I COUNT???!!!"
+  },
+  {
+    "time": 1524869672283,
+    "author": "Rascal_Two",
+    "authorId": "4",
+    "content": "Hello from Reddit - \n😊 😊 😊 😢 😢 "
+  },
+  {
+    "time": 1524869722650,
+    "author": "Bilbo",
+    "authorId": "5",
+    "content": "AYE YOOOOOOO. Wazxzzaaaahhhh F\nrom the Shire"
+  },
+  {
+    "time": 1524870160983,
+    "author": "mrpoopybum",
+    "authorId": "6",
+    "content": "hoi\n"
+  },
+  {
+    "time": 1524870176087,
+    "author": "mrpoopybum",
+    "authorId": "7",
+    "content": "😊\n"
+  },
+  {
+    "time": 1524870438997,
+    "author": "jensHart",
+    "authorId": "rksuerx237ljghu52wo",
+    "content": "The count should now include yourself 😊 \n"
+  },
+  { "time": 1524870553064, "author": "Ur", "authorId": "", "content": "Meow" },
+  {
+    "time": 1524870824816,
+    "author": "Tee",
+    "authorId": "8",
+    "content": "Wow, faat"
+  },
+  {
+    "time": 1524870836276,
+    "author": "Tee",
+    "authorId": "9",
+    "content": "*fast"
+  },
+  { "time": 1524870928128, "author": "f", "authorId": "", "content": "f" },
+  { "time": 1524870936993, "author": "f", "authorId": "", "content": "helo\n" },
+  { "time": 1524870960137, "author": "arxpw", "authorId": "", "content": "ff" },
+  {
+    "time": 1524871225266,
+    "author": "Dan",
+    "authorId": "10",
+    "content": "Nice app!"
+  },
+  {
+    "time": 1524871388662,
+    "author": "mtr",
+    "authorId": "",
+    "content": "Hello!\n"
+  },
+  {
+    "time": 1524871407488,
+    "author": "mtr",
+    "authorId": "11",
+    "content": "Some issues, previous comments are not me. \n"
+  },
+  {
+    "time": 1524871424295,
+    "author": "ChildMolester",
+    "authorId": "12",
+    "content": "Hi asl?\n"
+  },
+  {
+    "time": 1524871428422,
+    "author": "mtr",
+    "authorId": "14",
+    "content": "lolz\n"
+  },
+  {
+    "time": 1524871653696,
+    "author": "Aiden",
+    "authorId": "13",
+    "content":
+      "yah- messages are saying they’re from me, chat box has a strange thing where you have to press ‘done’ on the on-screen keyboard before you can press any other button such as ‘send’ not major but a bit annoying"
+  },
+  {
+    "time": 1524871428422,
+    "author": "jensHart",
+    "authorId": "15",
+    "content": "That was a bug, glad you spotted it. It's fixed now!"
+  },
+  {
+    "time": 1524871670254,
+    "author": "blarfg",
+    "authorId": "",
+    "content": "dufuq\n"
+  }
+]
