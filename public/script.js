@@ -178,8 +178,10 @@ var app = new Vue({
      * ie. beforeUpdate or afterUpdate that runs every time the
      * component renders
      */
-    var webSocketHost = location.origin.replace(/http.+\//, "ws");
-    this.socket = io.connect(webSocketHost + ":8000"); // Connects to current domain at port 80
+    // var webSocketHost = location.origin.replace(/http.+\//, "ws");
+    var wsHost = location.origin.split("//")[1];
+    wsHost = "ws://" + wsHost + ":8000";
+    this.socket = io.connect(wsHost); // Connects to current domain at port 80
 
     // Get user id
     if (!localStorage.getItem("userId")) {
