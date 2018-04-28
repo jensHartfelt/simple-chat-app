@@ -34,6 +34,11 @@ io.on("connection", socket => {
 
   // Broadcasts messages whenever one is recieved
   socket.on("new message from client", msg => {
+    // Strictly enforces the content limit on the server
+    if (msg.content.length > 700) {
+      msg.content = msg.content.slice(0, 700);
+    }
+
     socket.broadcast.emit("new message", msg);
 
     // Save messages in local variable

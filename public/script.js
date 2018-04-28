@@ -44,6 +44,14 @@ var app = new Vue({
        * Sends clients message to the server
        */
 
+      // Trims the message so it can't be only spaces and linebreaks
+      this.clientMessage = this.clientMessage.trim();
+
+      // Check length (it defined on the textarea but could be manually overwritten)
+      if (this.clientMessage.length > 700) {
+        this.clientMessage = this.clientMessage.slice(0, 700);
+      }
+
       // If the message if empty, don't send it
       if (this.clientMessage === "") {
         return;

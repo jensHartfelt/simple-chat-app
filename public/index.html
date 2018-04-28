@@ -100,7 +100,7 @@
     <!-- New message container -->
     <div class="new-message-container">
       <div class="inner-container">
-        <textarea v-model="clientMessage" @keyup.enter.exact="sendMessage" placeholder="Type your message here.."></textarea>
+        <textarea v-model="clientMessage" @keyup.enter.exact="sendMessage" maxlength="700" placeholder="Type your message here.."></textarea>
         <button @click="sendMessage" class="button" :class="{ disabled : !clientMessage }">Send</button>
       </div>
     </div>
