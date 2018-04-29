@@ -20,10 +20,10 @@
     <div class="modal" v-if="overlayActive">
       <h1>Hey there!</h1>
       <p>Welcome to this super simple chat app. Before you start chatting, you have to choose a display name. Enter one below</p>
-      <input type="text" @keyup.enter="verifyDisplayName" v-model="displayName" placeholder="Enter display name here...">
+      <input type="text" @keyup.enter="verifyDisplayName" v-model="displayName" maxlength="30" placeholder="Enter display name here...">
       <button href="#" @click="verifyDisplayName" class="button" :class="{ disabled : !displayName }">Start chatting!</button>
     </div>
-    <!-- / Choose a d isplay name modal -->
+    <!-- / Choose a display name modal -->
 
     <!-- Header nav -->
     <div class="header-nav">

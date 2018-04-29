@@ -16,11 +16,16 @@ app.use(express.static("public"));
 
 // Get existing messages
 app.get("/messages", (req, res) => {
+  /**
+   * TODO
+   * Add query params to retrieve messages with a given amount and offset
+   * like: /messages/?offset=14&amount=10
+   * so all messages doesn't have to be loaded every time the app starts
+   */
   res.json(messages);
 });
 
 /********* SOCKETS *********/
-
 // Holds information about how many users are connected right now
 var connectedUsers = 0;
 
@@ -30,18 +35,20 @@ io.on("connection", socket => {
   connectedUsers++;
   io.emit("connected users update", connectedUsers);
 
+  // Gives connected user a id (will be discarded at client if client already has one)
   socket.emit("unique id generated", uniqid());
 
   // Broadcasts messages whenever one is recieved
   socket.on("new message from client", msg => {
-    // Strictly enforces the content limit on the server
+    // Strictly enforces the content limit on the server too
     if (msg.content.length > 700) {
       msg.content = msg.content.slice(0, 700);
     }
-
     socket.broadcast.emit("new message", msg);
 
     // Save messages in local variable
+
+    // Removes the first item in the array if there are more than 500 messages
     if (messages.length >= 500) {
       messages.shift();
     }
@@ -59,12 +66,13 @@ io.on("connection", socket => {
 });
 
 /********* SERVER *********/
-http.listen(process.env.PORT || 80, () => {
+http.listen(process.env.PORT || 3000, () => {
   console.log("listening on port 80");
 });
 
 /******** UTILITIES *********/
 var timeout;
+
 function storeMessages() {
   /**
    * Debounced message-saving. Will only save to file after 10s of inactivity

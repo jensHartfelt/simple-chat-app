@@ -5,9 +5,9 @@ var app = new Vue({
     socket: undefined,
     // The current users display name
     displayName: "",
-    // Uniquely generted id to identify the author
+    // Uniquely generated id to identify the author
     userId: "",
-    // What user has types in the textarea
+    // What user has typed in the textarea
     clientMessage: "",
     // Array of current messages
     messages: [],
@@ -16,25 +16,28 @@ var app = new Vue({
     // Amount of users currently connected to the chat
     usersOnline: 0,
     // Amount of users with unsent changes in their text-field
+    // Note: is not used for anything right now
     usersTyping: 0,
     // Weather the app is ready or not
     appReady: false,
     // browser -> "chrome, safari, firefox or other"
+    // part of assignment requirements - is also not used for anything
     browser: "",
-    // Reference to the body
+    // Reference to the body -> just to save the dom lookups
     bodyEl: document.querySelector("body"),
     // Reference to moment.js (it's used in the html-templates and is therefor needed here)
     moment: window.moment,
+    // Wether the burgerMenu is open or not
     burgerMenuOpen: false
   },
   methods: {
     verifyDisplayName: function() {
-      if (this.displayName) {
+      if (this.displayName && this.displayName.length < 30) {
         this.overlayActive = false;
         localStorage.setItem("displayName", this.displayName);
       }
     },
-    emojifyText(text) {
+    emojifyText: function(text) {
       text = text.replace(/:-\)|:\)|:D|:-D/g, "😊");
       text = text.replace(/:-\(|:\(/g, "😢");
       return text;
@@ -59,7 +62,7 @@ var app = new Vue({
 
       // Create the message
       var message = {
-        time: Date.now(),
+        time: Date.now(), // Do the time on the server instead...
         author: this.displayName,
         authorId: this.userId,
         content: this.emojifyText(this.clientMessage)
@@ -104,12 +107,8 @@ var app = new Vue({
       });
     },
     changeDisplayName: function() {
-      /**
-       * Deletes the save displayName from lovalstorage and retrigger
-       * the modal where you have to choose a display name
-       */
-      // localStorage.removeItem("displayName");
-      // this.displayName = "";
+      // It would be nice too add a close button to the modal. It could just have
+      // an inline function toggling the overlayActive to false
       this.overlayActive = true;
     },
     updateConnectedUsers: function(connectedUsers) {
@@ -121,7 +120,7 @@ var app = new Vue({
     },
     setExistingMessages(messages) {
       /**
-       * Updates the list of messages with the one that the server already has
+       * Sets the list of messages with the one that the server already has
        */
       this.messages = messages;
       this.appReady = true;
@@ -162,7 +161,7 @@ var app = new Vue({
      * ie. beforeUpdate or afterUpdate that runs every time the
      * component renders
      */
-    this.socket = io(); // Connects to current domain at port 8000
+    this.socket = io(); // connects the socket
 
     // Get user id
     if (!localStorage.getItem("userId")) {
@@ -185,6 +184,8 @@ var app = new Vue({
     }
 
     // Get existing messages
+    // i know that this is a bit old-fashioned, but i saw no reason to include a request
+    // library to do one request.
     var request = new XMLHttpRequest();
     request.onload = function(res) {
       this.setExistingMessages(JSON.parse(res.target.response));
@@ -197,7 +198,7 @@ var app = new Vue({
   },
   watch: {
     /**
-     * Watcher function is triggers a function whenever a value change. You can watch any value
+     * A watcher triggers a function whenever a value change. You can watch any value
      * within the app.data object.
      * The name of the function (ie. XXXXXXX: function(val) {}) has to match the name of the
      * values being watched

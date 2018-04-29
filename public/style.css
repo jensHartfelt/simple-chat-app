@@ -42,7 +42,6 @@ div#app {
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
 }
-
 .modal img {
   width: 28px;
   height: 28px;
@@ -50,7 +49,6 @@ div#app {
   top: 1.2rem;
   right: 1.2rem;
 }
-
 .modal h1 {
   margin-bottom: 1rem;
 }
@@ -192,7 +190,6 @@ div.messages-inner-container {
   display: flex;
   margin-bottom: 1rem;
 }
-
 .message-meta {
   text-align: right;
   margin-top: 3px;
@@ -242,7 +239,6 @@ div.messages-inner-container {
   right: -9px;
   transform: rotate(-225deg);
 }
-
 @media screen and (max-width: 700px) {
   .message,
   .message.self {
@@ -250,16 +246,13 @@ div.messages-inner-container {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .message {
     padding-right: 10%;
   }
-
   .message.self {
     padding-left: 10%;
     padding-right: 0%;
   }
-
   .message-meta {
     text-align: left;
     margin-bottom: 2rem;
@@ -268,11 +261,9 @@ div.messages-inner-container {
     align-items: baseline;
     min-width: initial;
   }
-
   .message-meta p.meta {
     margin-left: 8px;
   }
-
   .message-content,
   .message.self .message-content {
     order: 1;
@@ -285,7 +276,6 @@ div.messages-inner-container {
     bottom: -9px;
     left: 9px;
   }
-
   .message.self .message-content:before {
     transform: rotate(225deg);
     bottom: -9px;
@@ -317,7 +307,7 @@ span.bold {
   font-weight: 500;
   color: #4155ac;
 }
-/* Cuts off too long displat names */
+/* Cuts off too long display names */
 .display-name {
   max-width: 120px;
   white-space: nowrap;
@@ -360,11 +350,9 @@ input {
   font-weight: 300;
   font-family: "Fira Sans", sans-serif;
 }
-
 input {
   background-color: #f2f6f7;
 }
-
 textarea {
   padding: 0 0.5rem 0 0;
   resize: none;
